@@ -16,30 +16,36 @@ import Profile from './pages/Profile';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Welcome />,
-  },
-  {
-    path: "/loginEmail",
-    element: <LoginEmail />,
-  },
-  {
-    path: "/registerEmail",
-    element: <RegisterEmail />,
+    element:<LayoutLogout />,
+    children: [
+      {
+        index: true,
+        element: <Welcome />,
+      },
+      {
+        path: "/loginEmail",
+        element: <LoginEmail />,
+      },
+      {
+        path: "/registerEmail",
+        element: <RegisterEmail />,
+      },
+    ]
   },
   {
     path: "/profile",
-    element: <Profile />,
-  },
+    element:<Profile />
+  }
+
+ 
 
 ]);
 
 function App() {
  
   return (
-    <div className="App bg-[#EFF2F6] h-screen overflow-y-scroll md:overflow-auto relative">
-        <LayoutLogout/>
+    <div className="App bg-[#EFF2F6] h-screen overflow-y-scroll md:overflow-auto relative">     
         <RouterProvider router={router} />
-      
     </div>
   )
 }

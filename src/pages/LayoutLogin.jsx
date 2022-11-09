@@ -70,6 +70,7 @@ const LayoutLogin = () => {
                 </Drawer>
 
             </div>
+            <Outlet />
         </header>
     )
 }
