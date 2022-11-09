@@ -7,6 +7,9 @@ import {
 import LayoutLogin from './pages/LayoutLogin';
 import LayoutLogout from './pages/LayoutLogout';
 import Welcome from './pages/Welcome';
+import LoginEmail from './pages/LoginEmail';
+import RegisterEmail from './pages/RegisterEmail';
+import Profile from './pages/Profile';
 
 
 
@@ -14,6 +17,18 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Welcome />,
+  },
+  {
+    path: "/loginEmail",
+    element: <LoginEmail />,
+  },
+  {
+    path: "/registerEmail",
+    element: <RegisterEmail />,
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
   },
 
 ]);

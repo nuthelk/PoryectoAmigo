@@ -1,17 +1,19 @@
-import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+import { ChakraProvider, extendTheme, } from '@chakra-ui/react'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 
 
-const colors = {
-  brand: {
-    900: '#000000',
+const theme = extendTheme({
+  colors: {
+    brand: {
+      100: "#f7fafc",
+      // ...
+      900: "#000000",
+    },
   },
-}
-
-const theme = extendTheme({ colors })
+})
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(

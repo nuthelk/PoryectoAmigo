@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { BsCart4 } from 'react-icons/bs'
 import { BiSearch } from 'react-icons/bi'
 import { GiHamburgerMenu } from 'react-icons/gi'
-import MenuBar from '../components/MenuBar'
+import {RiLogoutBoxLine} from 'react-icons/ri'
+import {MdFavorite} from 'react-icons/md'
 import { Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Input, useDisclosure } from '@chakra-ui/react'
 
 const LayoutLogin = () => {
@@ -27,7 +28,7 @@ const LayoutLogin = () => {
                 </div>
 
                 <div className='md:flex justify-around items-center hidden gap-10'>
-                    <BsCart4 size={24} className="cursor-pointer" />
+                    <MdFavorite size={24} className="cursor-pointer" />
                     <p className='cursor-pointer text-xl'>Profile</p>
                 </div>
                 <GiHamburgerMenu size={24} className="cursor-pointer md:hidden block" onClick={onOpen} />
@@ -46,13 +47,20 @@ const LayoutLogin = () => {
                         <DrawerBody className='mt-32 text-center flex flex-col gap-16'>
                             <p className='cursor-pointer text-2xl font-medium '>Shop</p>
                             <p className='cursor-pointer text-2xl font-medium '>Profile</p>
+                            <p className='cursor-pointer text-2xl font-medium '>Favorites</p>
+                            <div className='mt-36 flex items-center justify-center gap-2 cursor-pointer '>
+                                <p className='text-lg font-medium '>Logout</p>
+                                <RiLogoutBoxLine className='mt-1' size={20} />
+                            </div>
+                            
+                            
                         </DrawerBody>
 
                         <DrawerFooter>
                             <Button variant='outline' mr={3} onClick={onClose}>
                                 Cancel
                             </Button>
-                            <Button colorScheme='blue'>Save</Button>
+                            <Button bg='brand.900' className='text-white'>Save</Button>
                         </DrawerFooter>
                     </DrawerContent>
                 </Drawer>
