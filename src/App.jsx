@@ -20,15 +20,15 @@ const router = createBrowserRouter([
     element: <Welcome />,
   },
   {
-    path: "/LoginEmail",
+    path: "/loginEmail",
     element: <LoginEmail />,
   },
   {
-    path: "/RegisterEmail",
+    path: "/registerEmail",
     element: <RegisterEmail />,
   },
   {
-    path: "/Profile",
+    path: "/profile",
     element: <Profile />,
   },
   {
@@ -41,8 +41,8 @@ const router = createBrowserRouter([
 function App() {
  
   return (
-    <div className="App bg-[#EFF2F6] h-screen">
-        <LayoutLogout />
+    <div className="App bg-[#EFF2F6] h-screen overflow-y-scroll md:overflow-auto relative">
+        <LayoutLogout/>
         <RouterProvider router={router} />
       
     </div>

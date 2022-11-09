@@ -3,7 +3,7 @@ import { Button } from '../components/Button'
 
 const RegisterEmail = () => {
   return (
-    <div className='container mt-20'>
+    <div className='mt-20'>
         <form className='w-3/4 pb-5 bg-white gap-2 rounded-md md:w-3/5 mx-auto lg:w-1/3'>
             <h1 className='p-5 text-2xl font-bold md:pl-7'>Welcome Back</h1>
             <h2 className='pl-5 text-lg font-light text-gray-400 md:pl-7'>Sign Up</h2>
