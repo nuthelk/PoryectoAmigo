@@ -37,7 +37,7 @@ function App() {
  
   return (
     <div className="App bg-[#EFF2F6] h-screen overflow-y-scroll md:overflow-auto relative">
-        <LayoutLogin/>
+        <LayoutLogout/>
         <RouterProvider router={router} />
       
     </div>
