@@ -21,8 +21,8 @@ const router = createBrowserRouter([
 function App() {
  
   return (
-    <div className="App bg-[##EFF2F6  ] h-screen">
-        <LayoutLogout />
+    <div className="App bg-[#EFF2F6] min-w-max min-h-screen overflow-x-auto relative">
+        <LayoutLogin/>
         <RouterProvider router={router} />
       
     </div>

@@ -3,12 +3,12 @@ import React from 'react'
 const LayoutLogout = () => {
   console.log("first")
   return (
-    <header className='bg-black h-16'>
-        <div className='flex justify-between items-center text-white w-full h-full px-40'>
-            <h3 className=' text-2xl font-semibold cursor-pointer'>Ecommerce</h3>
+    <header className='bg-black h-16 sticky'>
+        <div className='flex items-center text-white h-full  md:px-40 px-8 justify-between'>
+            <h3 className=' text-2xl font-semibold cursor-pointer'>Mon-Pays</h3>
             <div className='flex justify-around items-center gap-8'>
-                <p className='cursor-pointer text-xl'>Login</p>
-                <p className='cursor-pointer text-xl'>Register</p>
+                <p className='cursor-pointer text-lg'>Login</p>
+                <p className='cursor-pointer text-lg'>Register</p>
             </div>
         </div>
     </header>
