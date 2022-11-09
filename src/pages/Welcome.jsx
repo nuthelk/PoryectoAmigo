@@ -4,6 +4,7 @@ import logo5 from '../img/logo5.png'
 import logo3 from '../img/logo 3.png'
 import logo2 from '../img/logo2.png'
 
+
 const Welcome = () => {
   return (
     <div className=''>
@@ -46,7 +47,7 @@ const Welcome = () => {
             
         </main>
 
-        
+      
     </div>
   )
 }

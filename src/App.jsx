@@ -17,34 +17,40 @@ import Description from './pages/Description';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Welcome />,
-  },
-  {
-    path: "/loginEmail",
-    element: <LoginEmail />,
-  },
-  {
-    path: "/registerEmail",
-    element: <RegisterEmail />,
+    element:<LayoutLogout />,
+    children: [
+      {
+        index: true,
+        element: <Welcome />,
+      },
+      {
+        path: "/loginEmail",
+        element: <LoginEmail />,
+      },
+      {
+        path: "/registerEmail",
+        element: <RegisterEmail />,
+      },
+      {
+        path: "/Description",
+        element: <Description />,
+      },
+    ]
   },
   {
     path: "/profile",
-    element: <Profile />,
-  },
-  {
-    path: "/Description",
-    element: <Description />,
-  },
+    element:<Profile />
+  }
+
+ 
 
 ]);
 
 function App() {
  
   return (
-    <div className="App bg-[#EFF2F6] h-screen overflow-y-scroll md:overflow-auto relative">
-        <LayoutLogout/>
+    <div className="App bg-[#EFF2F6] h-screen overflow-y-scroll md:overflow-auto relative">     
         <RouterProvider router={router} />
-      
     </div>
   )
 }
