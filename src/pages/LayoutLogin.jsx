@@ -16,7 +16,7 @@ const LayoutLogin = () => {
 
     return (
         <header className='bg-black h-16 sticky '>
-            <div className='flex items-center justify-between  text-white h-full md:px-28 px-2'>
+            <div className='flex items-center justify-between  text-white h-full md:px-20 lg:px-28 sm:px-16 px-2'>
                 <div className='flex md:justify-around items-center md:gap-12 gap-4 '>
                     <h3 className='text-2xl font-semibold cursor-pointer w-28'>Mon-Pays</h3>
                     <p className='cursor-pointer text-xl font-light  hidden md:block '>Shop</p>
@@ -28,7 +28,11 @@ const LayoutLogin = () => {
                 </div>
 
                 <div className='md:flex justify-around items-center hidden gap-10'>
-                    <MdFavorite size={24} className="cursor-pointer" />
+                    <div className='flex items-center justify-center  cursor-pointer gap-2'>
+                        <MdFavorite size={24} className="mt-1" />
+                        <p className='text-xl'>Favorites</p>
+                    </div>
+                    
                     <p className='cursor-pointer text-xl'>Profile</p>
                 </div>
                 <GiHamburgerMenu size={24} className="cursor-pointer md:hidden block" onClick={onOpen} />

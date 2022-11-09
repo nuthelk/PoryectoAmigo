@@ -16,22 +16,22 @@ const Profile = () => {
       <form className="flex flex-col items-center mt-10 gap-5 px-10 mx-auto w-2/3 md:w-3/4 lg:w-1/2 lg:gap-6">
         <h1 className="font-bold text-xl md:text-2xl text-center">Basic Information</h1>
         <input
-          className="md:text-lg md:h-12 h-10 border-2 pl-5 md:w-96 "
+          className="md:text-lg md:h-12 h-10 border-2 pl-5 md:w-96 sm:w-72  "
           placeholder="First Name"
           type="text"
         />
         <input
-          className="md:h-12 md:text-lg h-10 border-2 pl-5 md:w-96 rounded-md "
+          className="md:h-12 md:text-lg h-10 border-2 pl-5 md:w-96 sm:w-72 rounded-md "
           placeholder="Last Name"
           type="text"
         />
         <input
-          className="md:h-12 md:text-lg h-10 border-2 pl-5 md:w-96 rounded-md "
+          className="md:h-12 md:text-lg h-10 border-2 pl-5 md:w-96 sm:w-72 rounded-md "
           placeholder="Email@email.com"
           type="email"
         />
         <input
-          className="md:h-12 md:text-lg h-10 border-2 pl-5 md:w-96 rounded-md "
+          className="md:h-12 md:text-lg h-10 border-2 pl-5 md:w-96 sm:w-72 rounded-md "
           placeholder="Address"
           type="text"
         />
