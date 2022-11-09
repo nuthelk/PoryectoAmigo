@@ -10,6 +10,7 @@ import Welcome from './pages/Welcome';
 import LoginEmail from './pages/LoginEmail';
 import RegisterEmail from './pages/RegisterEmail';
 import Profile from './pages/Profile';
+import Description from './pages/Description';
 
 
 
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: "/Profile",
     element: <Profile />,
+  },
+  {
+    path: "/Description",
+    element: <Description />,
   },
 
 ]);
