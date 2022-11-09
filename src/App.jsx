@@ -9,6 +9,7 @@ import LayoutLogout from './pages/LayoutLogout';
 import Welcome from './pages/Welcome';
 import LoginEmail from './pages/LoginEmail';
 import RegisterEmail from './pages/RegisterEmail';
+import Profile from './pages/Profile';
 
 
 
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/RegisterEmail",
     element: <RegisterEmail />,
+  },
+  {
+    path: "/Profile",
+    element: <Profile />,
   },
 
 ]);
