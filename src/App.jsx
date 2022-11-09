@@ -11,6 +11,7 @@ import LoginEmail from './pages/LoginEmail';
 import RegisterEmail from './pages/RegisterEmail';
 import Profile from './pages/Profile';
 import Description from './pages/Description';
+import WishList from './pages/WishList';
 
 
 
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/Description",
         element: <Description />,
+      },
+      {
+        path: "/WishList",
+        element: <WishList />,
       },
     ]
   },
