@@ -1,13 +1,42 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiFillHeart } from "react-icons/ai";
 import { Button } from "../components/Button";
 
 const Description = () => {
 
   const [addFav, setAddFav] = useState(false)
+  const [pintar, setPintar] = useState([])
+    const urlQuiz = "https://proyecto-amigo.herokuapp.com/Propertys/1"
+
+    useEffect(() => {
+        getItems()
+            .then(pintaritems => setPintar(pintaritems))
+    },[])
+
+    const getItems = async () => {
+        const resp = await fetch(urlQuiz)
+        const data = await resp.json()
+        
+        const datas = data
+        
+        return datas
+
+    }
+
+    const ejemplo = () => {
+      console.log(pintar);
+    }
+    
 
   return (
     <div className="flex flex-col lg:flex-row lg:items-start items-center md:mt-32 mt-10 lg:px-20 xl:px-40 pb-4">
+      {/* {
+        pintar.map((items)=>(
+          <>
+            
+          </>
+        ))
+      } */}
       <div className="gap-2 grid grid-cols-1 md:grid-cols-2 w-3/4 items-center justify-center h-56 overflow-y-scroll md:h-[70%]">
         <img className="w-full h-full md:max-w-md max-w-sm bg-cover justify-self-center" src="https://i.pinimg.com/736x/21/28/4e/21284ec293da6c04197d6c9a1632157a.jpg" alt="Casa 1" />
         <img className="w-full h-full md:max-w-md max-w-sm bg-cover justify-self-center" src="https://archivo.lasillavacia.com/archivos/historias/vivienda/bv.jpg" alt="Casa 2" />
@@ -31,11 +60,9 @@ const Description = () => {
              <div className="bg-black text-white w-32 h-8 flex justify-center items-center rounded-md font-medium">
               Categoria 1
              </div>
-        <div className="w-56 mx-auto mt-2 md:mt-10">
-              <Button text={"Contact us"} />
+        <div onClick={ejemplo} className="w-56 mx-auto mt-2 md:mt-10">
+              <Button  text={"Contact us"} />
          </div>
-        
-        
       </div>
     </div>
   );
