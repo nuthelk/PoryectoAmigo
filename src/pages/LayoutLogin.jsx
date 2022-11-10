@@ -5,6 +5,7 @@ import { GiHamburgerMenu } from 'react-icons/gi'
 import {RiLogoutBoxLine} from 'react-icons/ri'
 import {MdFavorite} from 'react-icons/md'
 import { Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Input, useDisclosure } from '@chakra-ui/react'
+import { Link, Outlet } from 'react-router-dom'
 
 const LayoutLogin = () => {
 
@@ -15,7 +16,7 @@ const LayoutLogin = () => {
 
 
     return (
-        <header className='bg-black h-16 sticky '>
+        <header className='bg-black h-16  '>
             <div className='flex items-center justify-between  text-white h-full md:px-20 lg:px-28 sm:px-16 px-2'>
                 <div className='flex md:justify-around items-center md:gap-12 gap-4 '>
                     <h3 className='text-2xl font-semibold cursor-pointer w-28'>Mon-Pays</h3>
@@ -49,8 +50,13 @@ const LayoutLogin = () => {
                         <DrawerHeader>Mon-Pays</DrawerHeader>
 
                         <DrawerBody className='mt-32 text-center flex flex-col gap-16'>
-                            <p className='cursor-pointer text-2xl font-medium '>Shop</p>
-                            <p className='cursor-pointer text-2xl font-medium '>Profile</p>
+                            <Link to="/shop" onClick={onClose}>
+                                <p className='cursor-pointer text-2xl font-medium '>Shop</p>
+                            </Link>
+                            <Link to="/profile" onClick={onClose}>
+                                <p className='cursor-pointer text-2xl font-medium '>Profile</p>
+                            </Link>
+                            
                             <p className='cursor-pointer text-2xl font-medium '>Favorites</p>
                             <div className='mt-36 flex items-center justify-center gap-2 cursor-pointer '>
                                 <p className='text-lg font-medium '>Logout</p>
