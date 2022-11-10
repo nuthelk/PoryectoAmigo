@@ -38,7 +38,7 @@ const router = createBrowserRouter([
         element:<Profile />
       },
       {
-        path: "/WishList",
+        path: "/wishList",
         element: <WishList />,
       },
       {
