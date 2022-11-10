@@ -33,19 +33,22 @@ const router = createBrowserRouter([
         element: <RegisterEmail />,
       },
       {
-        path: "/Description",
-        element: <Description />,
+        path: "/profile",
+        element:<Profile />
       },
       {
         path: "/WishList",
         element: <WishList />,
       },
+      {
+        path: "/description",
+        element:<Description />
+      }
     ]
   },
-  {
-    path: "/profile",
-    element:<Profile />
-  }
+  
+  
+
 
  
 
