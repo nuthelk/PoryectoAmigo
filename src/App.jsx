@@ -18,7 +18,7 @@ import Shop from './pages/Shop';
 const router = createBrowserRouter([
   {
     path: "/",
-    element:<LayoutLogin />,
+    element:<LayoutLogout />,
     children: [
       {
         index: true,
