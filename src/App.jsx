@@ -11,13 +11,14 @@ import LoginEmail from './pages/LoginEmail';
 import RegisterEmail from './pages/RegisterEmail';
 import Profile from './pages/Profile';
 import Description from './pages/Description';
+import Shop from './pages/Shop';
 
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element:<LayoutLogout />,
+    element:<LayoutLogin />,
     children: [
       {
         index: true,
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "/description",
         element:<Description />
+      },
+      {
+        path: "/shop",
+        element:<Shop />
       }
     ]
   },
@@ -52,7 +57,7 @@ const router = createBrowserRouter([
 function App() {
  
   return (
-    <div className="App bg-[#EFF2F6] h-screen overflow-y-scroll md:overflow-auto relative">     
+    <div className="App bg-[#EFF2F6] h-screen overflow-y-scroll  relative">     
         <RouterProvider router={router} />
     </div>
   )

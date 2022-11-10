@@ -6,6 +6,7 @@ import logo2 from '../img/logo2.png'
 import casa1 from '../img/casa1.jpg'
 import casa2 from '../img/casa2.jpg'
 import casa3 from '../img/casa3.jpeg'
+import { Link } from 'react-router-dom'
 
 
 const Welcome = () => {
@@ -17,9 +18,12 @@ const Welcome = () => {
                 <p className='text-[#979797]'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br />
                 Lorem Ipsum has been the industry's standard dummy text</p>
             </div>
-            <div className=' border border-black p-2 w-40 h-12 m-auto mt-6 flex justify-center items-center cursor-pointer hover:bg-black hover:text-white transition-all duration-300'>
-                <p className='font-semibold'>Show All</p>
-            </div>
+            <Link to="/shop">
+                <div className=' border border-black p-2 w-40 h-12 m-auto mt-6 flex justify-center items-center cursor-pointer hover:bg-black hover:text-white transition-all duration-300'>
+                    <p className='font-semibold'>Show All</p>
+                </div>
+            </Link>
+           
             
             <div className='flex flex-col md:flex-row md:justify-center items-center  mt-16 md:h-[400px] gap-6 '>
                 <div className='flex items-end h-full hover:scale-110 transition-all duration-300'>

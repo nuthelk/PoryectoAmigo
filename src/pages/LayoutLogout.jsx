@@ -4,7 +4,7 @@ import { Link, Outlet } from 'react-router-dom'
 const LayoutLogout = () => {
   
   return (
-    <header className='bg-black h-16 sticky'>
+    <header className='bg-black h-16 '>
         <div className='flex items-center text-white h-full  md:px-40 px-2 sm:px-8 justify-between'>
           <Link to="/">
             <h3 className=' text-2xl font-semibold cursor-pointer'>Mon-Pays</h3>
