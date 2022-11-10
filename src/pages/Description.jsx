@@ -8,7 +8,7 @@ const Description = () => {
   const [urlsImg, setUrlsImg] = useState();
   const [pintar, setPintar] = useState([]);
   const urlDescri = `https://proyecto-amigo.herokuapp.com/Propertys/${"2"}`;
-  const urlFav = "https://proyecto-amigo.herokuapp.com/favoritos";
+  const urlFav = "https://proyecto-amigo.herokuapp.com/usuarios";
 
   useEffect(() => {
     getItems().then((pintaritems) => setPintar(pintaritems));
@@ -24,7 +24,23 @@ const Description = () => {
 
   const handleWishList = async() => {
     
-    const getFav = await get(`${urlFav}`)
+    const getFav = await get(`${urlFav}/${"1"}`)
+
+    const {favoritos} = getFav
+    
+    const findFav = favoritos.find(e => e.id == pintar.id )
+    const datanueva = {}
+
+    if(findFav){
+      console.log("a");
+      patchData(`${urlFav}/${pintar.id}`, {favoritos:datanueva})
+      setAddFav(true)
+    }else{
+      patchData(`${urlFav}}`, {favoritos:pintar});
+      setAddFav(false)
+    }
+    
+    /* const getFav = await get(`${urlFav}`)
     const findFav = getFav.find(e => e.id == pintar.id )
     const datanueva = {}
     if(findFav){
@@ -34,7 +50,7 @@ const Description = () => {
     }else{
       post(`${urlFav}`, pintar);
       setAddFav(false)
-    }
+    } */
 
   };
 
