@@ -37,3 +37,4 @@ export const patchData = async (url,data) => {
         console.error(error);
     }
 }
+
