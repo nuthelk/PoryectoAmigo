@@ -14,7 +14,7 @@ const Shop = () => {
     //traer los datos de las propiedades
     useEffect(() => {
         const data = async () => {
-            const resp = await fetch("https://proyecto-amigo.herokuapp.com/Propertys")
+            const resp = await fetch("https://mon-pays.fly.dev/Propertys")
             const datos = await resp.json()
             setDataPropiedad(datos)
         }
