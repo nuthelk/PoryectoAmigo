@@ -52,26 +52,7 @@ const Shop = () => {
                 precio={400}
                 imagen={imagen1}
             />
-            <DesignPropiedad 
-                nombre={'Propiedad'}
-                precio={400}
-                imagen={imagen1}
-            />
-            <DesignPropiedad 
-                nombre={'Propiedad'}
-                precio={400}
-                imagen={imagen1}
-            />
-            <DesignPropiedad 
-                nombre={'Propiedad'}
-                precio={400}
-                imagen={imagen1}
-            />
-            <DesignPropiedad 
-                nombre={'Propiedad'}
-                precio={400}
-                imagen={imagen1}
-            />
+            
         </div>
         <footer className='mt-10 h-20'>
                 

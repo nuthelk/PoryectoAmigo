@@ -5,6 +5,7 @@ const WishList = () => {
   return (
     <div className='container m-0'>
         <CardWish />
+        <CardWish />
     </div>
   )
 }
