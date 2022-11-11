@@ -1,6 +1,7 @@
 import React from 'react'
+import { formatterPeso } from '../helpers/formatoMoneda'
 
-const DesignPropiedad = ({ imagen, precio, nombre, caro, categoria }) => {
+const DesignPropiedad = ({ imagen, precio, nombre, categoria }) => {
   return (
     <div className='cursor-pointer'>
       <div className='h-72 w-72'>
@@ -10,8 +11,7 @@ const DesignPropiedad = ({ imagen, precio, nombre, caro, categoria }) => {
         <p className='text-lg font-bold'>{nombre}</p>
         <div className='flex items-center justify-between w-full'>
           <div>
-            <p className='font-medium'>{precio}</p>
-            <p className='font-medium capitalize'>{caro}</p>
+            <p className='font-medium'>{formatterPeso.format(precio)}</p>
           </div>
           
           <p className='text-lg font-bold capitalize'>{categoria}</p>

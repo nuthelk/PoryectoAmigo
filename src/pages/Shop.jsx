@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import ButtonBlack from '../components/ButtonBlack'
 import DesignPropiedad from '../components/DesignPropiedad'
-import { get } from '../helpers/crud'
-import imagen1 from '../img/casa2.jpg'
+import {BiSearch} from 'react-icons/bi'
+import { SortArray, SortArray2, SortArrayPrice, SortArrayPrice2 } from '../helpers/funcionesOrdenamiento'
 
 const Shop = () => {
 
     const [dataPropiedad, setDataPropiedad] = useState()
+    const [search, setSearch] = useState()
+    const [bandera, setBandera] = useState(false)
+    
 
+    //traer los datos de las propiedades
     useEffect(() => {
         const data = async () => {
             const resp = await fetch("https://proyecto-amigo.herokuapp.com/Propertys")
@@ -18,9 +22,49 @@ const Shop = () => {
         data()
     }, [])
 
+    //enviar el id al localStorage clickear una propiedad
     const enviarID = (id) => {
         localStorage.setItem('id', id)
     }
+
+    //funcion de filtro
+    let results = []
+    if(!search){
+        results = dataPropiedad
+    }else{
+        results = dataPropiedad.filter((dato) => dato.nombre.toLowerCase().includes(search.toLowerCase()))
+    }
+
+    //funcion busqueda
+    const searcher = (e) => {
+        setSearch(e.target.value)
+    }
+
+    //funcion ordenar A-Z
+    const ordenar1 = () =>{
+        setDataPropiedad(results.sort(SortArray))
+        setBandera(!bandera)
+    }
+
+    //funcion ordenar Z-A
+    const ordenar2 = () =>{
+        setDataPropiedad(results.sort(SortArray2))
+        setBandera(!bandera)
+    }
+
+    //funcion ordenar de mayor precio a menor
+    const ordenarPrice = () =>{
+        setDataPropiedad(results.sort(SortArrayPrice))
+        setBandera(!bandera)
+    }
+
+    //funcion ordenar de menor precio a mayor
+    const ordenarPrice2 = () =>{
+        setDataPropiedad(results.sort(SortArrayPrice2))
+        setBandera(!bandera)
+    }
+
+
 
     return (
         <main className='h-screen '>
@@ -32,28 +76,32 @@ const Shop = () => {
             </div>
 
             <div className='flex items-center mt-12 px-2 md:px-40 gap-2 flex-wrap justify-center md:justify-start'>
-                <ButtonBlack text={"Used"} />
-                <ButtonBlack text={"New"} />
-                <ButtonBlack text={"Expensive"} />
-                <ButtonBlack text={"Cheap"} />
+                <ButtonBlack text={"A-Z"} funcion={ordenar1} />
+                <ButtonBlack text={"Z-A"} funcion={ordenar2} />
+                <ButtonBlack text={"Higher Price"} funcion={ordenarPrice} />
+                <ButtonBlack text={"Lower Price"} funcion={ordenarPrice2} />
             </div>
 
-            <div className='w-full flex items-centers justify-center mt-20'>
+            <div className='w-full flex items-centers justify-center mt-10 mb-12'>
                 <div className='flex items-center justify-center w-60 h-12 border-[1px] border-black font-semibold hover:bg-black hover:text-white transition-all duration-300 cursor-pointer'>
                     Post your property
                 </div>
             </div>
 
+            <div className='md:flex items-center relative mt-4 justify-center bg-white w-56  md:w-80 m-auto rounded-lg'>
+                <BiSearch size={24} className="absolute top-2 left-0 ml-2  md:block " />
+                <input value={search} onChange={searcher} type="search" placeholder='Search' className='pl-10 md:pl-10  rounded-lg outline-none md:w-40 lg:w-72  w-40 h-10 md:h-10' />
+            </div>
+
             <div className='flex flex-wrap items-center mt-8 px-2  gap-10 justify-center'>
                 {
                     dataPropiedad &&
-                    dataPropiedad.map(propiedad => (
-                        <div onClick={()=> enviarID(propiedad.id)} key={propiedad.id}>
+                    results.map(propiedad => (
+                        <div onClick={() => enviarID(propiedad.id)} key={propiedad.id}>
                             <DesignPropiedad
                                 nombre={propiedad.nombre}
                                 precio={propiedad.precio}
                                 imagen={propiedad.url.url1}
-                                caro={propiedad.caro}
                                 categoria={propiedad.categoria}
                             />
                         </div>

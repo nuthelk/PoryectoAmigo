@@ -62,7 +62,7 @@ const router = createBrowserRouter([
 function App() {
  
   return (
-    <div className="App bg-[#EFF2F6] h-screen overflow-y-scroll  relative">     
+    <div className="App bg-[#EFF2F6] h-screen overflow-y-scroll">     
         <RouterProvider router={router} />
     </div>
   )

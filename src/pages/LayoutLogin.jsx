@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import { BsCart4 } from 'react-icons/bs'
-import { BiSearch } from 'react-icons/bi'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import {RiLogoutBoxLine} from 'react-icons/ri'
 import {MdFavorite} from 'react-icons/md'
@@ -26,10 +24,6 @@ const LayoutLogin = () => {
                         <p className='cursor-pointer text-xl font-light  hidden md:block '>Shop</p>
                     </Link>
                     
-                    <div className='md:flex items-center relative mt-1 '>
-                        <BiSearch size={24} className="absolute top-2 ml-2 hidden md:block" />
-                        <input type="search" placeholder='Search' className='pl-1 md:pl-10 border-2 border-white rounded-lg md:w-40 lg:w-60 bg-black w-24 h-8 md:h-10' />
-                    </div>
 
                 </div>
 
