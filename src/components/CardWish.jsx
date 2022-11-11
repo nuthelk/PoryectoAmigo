@@ -3,7 +3,7 @@ import { get, patchData } from "../helpers/crud";
 
 
 const CardWish = () => {
-  const urlFav = "https://proyecto-amigo.herokuapp.com/usuarios";
+  const urlFav = "https://mon-pays.fly.dev/usuarios";
   const [pintar, setPintar] = useState([]);
 
 

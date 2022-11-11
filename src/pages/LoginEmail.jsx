@@ -6,7 +6,7 @@ import { useForm } from '../Hooks/useForm';
 
 
 const LoginEmail = () => {
-  const urlUsuarios = `https://proyecto-amigo.herokuapp.com/usuarios`;
+  const urlUsuarios = `https://mon-pays.fly.dev/usuarios`;
 
   const { formValue, handleInputChangeName, reset } = useForm({
     email: "",

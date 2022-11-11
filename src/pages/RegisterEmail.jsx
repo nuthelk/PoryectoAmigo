@@ -5,7 +5,7 @@ import { get, post } from '../helpers/crud';
 import { useForm } from '../Hooks/useForm';
 
 const RegisterEmail = () => {
-  const urlUsuarios = `https://proyecto-amigo.herokuapp.com/usuarios`;
+  const urlUsuarios = `https://mon-pays.fly.dev/usuarios`;
 
   // Este es un custom hook que me permite alamcenar los datos de los inputs en handleInputChangeName, para despues imprimirlos en formValue
   const { formValue, handleInputChangeName, reset } = useForm({
@@ -42,7 +42,7 @@ const RegisterEmail = () => {
           password:formValue.password,
           favoritos:[]
         }
-        post(urlDescri, user)
+        post(urlUsuarios, user)
         Swal.fire(
           'Welcome!',
           'You clicked the button!',

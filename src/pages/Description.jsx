@@ -8,8 +8,9 @@ const Description = () => {
   const [urlsImg, setUrlsImg] = useState();
   const [switche, setSwitche] = useState(false);
   const [pintar, setPintar] = useState([]);
-  const urlDescri = `https://proyecto-amigo.herokuapp.com/Propertys/${"1"}`;
-  const urlFav = "https://proyecto-amigo.herokuapp.com/usuarios";
+  const id = localStorage.getItem("id")
+  const urlDescri = `https://mon-pays.fly.dev/Propertys/${id}`;
+  const urlFav = "https://mon-pays.fly.dev/usuarios";
 
   useEffect(() => {
     getItems().then((pintaritems) => setPintar(pintaritems));
