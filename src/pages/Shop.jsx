@@ -3,12 +3,18 @@ import ButtonBlack from '../components/ButtonBlack'
 import DesignPropiedad from '../components/DesignPropiedad'
 import {BiSearch} from 'react-icons/bi'
 import { SortArray, SortArray2, SortArrayPrice, SortArrayPrice2 } from '../helpers/funcionesOrdenamiento'
+import { useDisclosure } from '@chakra-ui/react'
+import { ModalPost } from '../components/ModalPost'
 
 const Shop = () => {
 
     const [dataPropiedad, setDataPropiedad] = useState()
     const [search, setSearch] = useState()
     const [bandera, setBandera] = useState(false)
+
+    const { isOpen, onOpen, onClose } = useDisclosure()
+    const initialRef = React.useRef(null)
+    const finalRef = React.useRef(null)
     
 
     //traer los datos de las propiedades
@@ -83,10 +89,19 @@ const Shop = () => {
             </div>
 
             <div className='w-full flex items-centers justify-center mt-10 mb-12'>
-                <div className='flex items-center justify-center w-60 h-12 border-[1px] border-black font-semibold hover:bg-black hover:text-white transition-all duration-300 cursor-pointer'>
+                <div onClick={onOpen} 
+                className='flex items-center justify-center w-60 h-12 border-[1px] border-black font-semibold hover:bg-black hover:text-white transition-all duration-300 cursor-pointer'>
                     Post your property
                 </div>
             </div>
+
+            <ModalPost 
+                isOpen={isOpen}
+                onOpen={onOpen}
+                onClose={onClose}
+                initialRef={initialRef}
+                finalRef={finalRef}
+            />
 
             <div className='md:flex items-center relative mt-4 justify-center bg-white w-56  md:w-80 m-auto rounded-lg'>
                 <BiSearch size={24} className="absolute top-2 left-0 ml-2  md:block " />
