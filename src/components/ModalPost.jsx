@@ -33,7 +33,7 @@ export function ModalPost({ isOpen, onOpen, onClose, initialRef, finalRef }) {
 
                             <FormControl mt={4} isRequired>
                                 <FormLabel>Price</FormLabel>
-                                <NumberInput ref={initialRef} required focusBorderColor="brand.900">
+                                <NumberInput required focusBorderColor="brand.900">
                                     <NumberInputField placeholder='$ Price' value='' />
                                     <NumberInputStepper>
                                         <NumberIncrementStepper />
@@ -44,7 +44,7 @@ export function ModalPost({ isOpen, onOpen, onClose, initialRef, finalRef }) {
 
                             <FormControl mt={4} isRequired>
                                 <FormLabel>Address</FormLabel>
-                                <Input ref={initialRef} placeholder='Address' required focusBorderColor="brand.900" />
+                                <Input placeholder='Address' required focusBorderColor="brand.900" />
                             </FormControl>
 
                             <FormControl mt={4} isRequired>
@@ -53,7 +53,7 @@ export function ModalPost({ isOpen, onOpen, onClose, initialRef, finalRef }) {
                             </FormControl>
 
                             <FormControl mt={4} isRequired>
-                                <FormLabel>URLs</FormLabel>
+                                <FormLabel>Photos</FormLabel>
                                 <Stack spacing={2}>
                                     <Input placeholder='URL 1' size='sm' required focusBorderColor="brand.900" />
                                     <Input placeholder='URL 2' size='sm' required focusBorderColor="brand.900" />
