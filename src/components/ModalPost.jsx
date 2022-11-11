@@ -26,8 +26,8 @@ export function ModalPost({ isOpen, onOpen, onClose, initialRef, finalRef }) {
                             <FormControl mt={4} isRequired>
                                 <FormLabel isRequired>Category</FormLabel>
                                 <Select required focusBorderColor="brand.900">
-                                    <option value='used'>Used</option>
                                     <option value='new'>New</option>
+                                    <option value='used'>Used</option>                                   
                                 </Select>
                             </FormControl>
 

@@ -52,25 +52,25 @@ const Description = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row lg:items-start items-center md:mt-32 mt-10 lg:px-20 xl:px-40 pb-4">
-      <div className="gap-2 grid grid-cols-1 md:grid-cols-2 w-3/4 items-center justify-center h-56 overflow-y-scroll md:h-[70%]">
+    <div className="flex min-h-max flex-col xl:flex-row lg:items-center items-center md:mt-32 mt-10 lg:px-20 xl:px-40 pb-4 justify-center">
+      <div className="gap-2 grid grid-cols-1 md:grid-cols-2 w-3/4 xl:w-full items-center justify-center h-56 overflow-y-scroll md:h-full">
         <img
-          className="rounded-md w-full h-full md:max-w-md max-w-sm bg-cover justify-self-center"
+          className="rounded-md w-full h-full md:max-w-lg max-w-sm bg-cover  object-cover"
           src={urlsImg ? urlsImg.url1 : ""}
           alt="Casa 1"
         />
         <img
-          className="rounded-md w-full h-full md:max-w-md max-w-sm bg-cover justify-self-center"
+          className="rounded-md w-full h-full md:max-w-lg max-w-sm bg-cover object-cover"
           src={urlsImg ? urlsImg.url2 : ""}
           alt="Casa 2"
         />
         <img
-          className="rounded-md w-full h-full md:max-w-md max-w-sm bg-cover justify-self-center"
+          className="rounded-md w-full h-full md:max-w-lg max-w-sm bg-cover object-cover"
           src={urlsImg ? urlsImg.url3 : ""}
           alt="Casa 3"
         />
         <img
-          className="rounded-md w-full h-full md:max-w-md max-w-sm bg-cover justify-self-center"
+          className="rounded-md w-full h-full md:max-w-lg max-w-sm bg-cover  object-cover"
           src={urlsImg ? urlsImg.url4 : ""}
           alt="Casa 4"
         />
@@ -89,7 +89,7 @@ const Description = () => {
             size={35}
           />
         </div>
-        <div className="h-64 md:h-36 2xl:h-80 overflow-y-scroll md:overflow-auto">
+        <div className="h-64 md:h-36 2xl:max-h-max overflow-y-scroll md:overflow-auto">
           <p className="font-normal">
             {pintar.descripcion}
           </p>
