@@ -8,8 +8,6 @@ import { useForm } from '../Hooks/useForm';
 
 const LoginEmail = () => {
   const urlUsuarios = `https://mon-pays.fly.dev/usuarios`;
-  const navigate = useNavigate()
-
 
   const { formValue, handleInputChangeName } = useForm({
     email: "",
@@ -24,7 +22,6 @@ const LoginEmail = () => {
     if(findUsuario){
       if(findUsuario.password == formValue.password){   //validar si la password es correcta
         sessionStorage.setItem("idUser", findUsuario.id)
-        // navigate("/")
         window.location.replace('/')
 
       }else{

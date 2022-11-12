@@ -14,8 +14,6 @@ import Description from './pages/Description';
 import WishList from './pages/WishList';
 import Shop from './pages/Shop';
 import NotFound from './pages/NotFound';
-import { useContext, useEffect } from 'react';
-import { Context } from './Context/ContextProvider';
 
 
 let idUser = sessionStorage.getItem('idUser')
@@ -67,12 +65,6 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-
-  const { handleBandera, bandera, setBandera } = useContext(Context)
-
-  useEffect(() => {
-    console.log("funciona")
-  }, [bandera])
 
   return (
     <div className="App bg-[#EFF2F6] max-h-max h-screen overflow-y-scroll ">
