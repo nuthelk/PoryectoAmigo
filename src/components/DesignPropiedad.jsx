@@ -10,7 +10,7 @@ const DesignPropiedad = ({ imagen, precio, nombre, categoria }) => {
           <img src={imagen} alt={nombre} className="h-full w-full object-cover" />
         </div>
         <div className='flex flex-col  mt-4' >
-          <p className='text-lg font-bold'>{nombre}</p>
+          <p className='text-lg font-bold'>{nombre.substr(0,34)}</p>
           <div className='flex items-center justify-between w-full'>
             <div>
               <p className='font-medium'>{formatterPeso.format(precio)}</p>
