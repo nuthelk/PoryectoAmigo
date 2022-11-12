@@ -3,7 +3,7 @@ import CardWish from '../components/CardWish'
 
 const WishList = () => {
   return (
-    <div className='container m-0'>
+    <div className='m-auto'>
         <CardWish />
     </div>
   )

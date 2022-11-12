@@ -5,16 +5,19 @@ import {BiSearch} from 'react-icons/bi'
 import { SortArray, SortArray2, SortArrayPrice, SortArrayPrice2 } from '../helpers/funcionesOrdenamiento'
 import { useDisclosure } from '@chakra-ui/react'
 import { ModalPost } from '../components/ModalPost'
+import { render } from 'react-dom'
 
 const Shop = () => {
 
     const [dataPropiedad, setDataPropiedad] = useState()
     const [search, setSearch] = useState()
     const [bandera, setBandera] = useState(false)
+    const [rendering, setRendering] = useState(1)
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const initialRef = React.useRef(null)
     const finalRef = React.useRef(null)
+
     
 
     //traer los datos de las propiedades
@@ -24,9 +27,8 @@ const Shop = () => {
             const datos = await resp.json()
             setDataPropiedad(datos)
         }
-
-        data()
-    }, [])
+        data()  
+    }, [rendering])
 
     //enviar el id al localStorage clickear una propiedad
     const enviarID = (id) => {
@@ -101,6 +103,8 @@ const Shop = () => {
                 onClose={onClose}
                 initialRef={initialRef}
                 finalRef={finalRef}
+                setRendering={setRendering}
+                rendering={rendering}
             />
 
             <div className='md:flex items-center relative mt-4 justify-center bg-white w-56  md:w-80 m-auto rounded-lg'>

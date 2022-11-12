@@ -59,7 +59,7 @@ const LayoutLogin = () => {
                             <Link to="/profile" onClick={onClose}   >
                                 <p className='cursor-pointer text-2xl font-medium '>Profile</p>
                             </Link>
-                            <Link>
+                            <Link to="/wishList" onClick={onClose}>
                                 <p className='cursor-pointer text-2xl font-medium '>Favorites</p>
                             </Link>
                             

@@ -5,13 +5,14 @@ import { get, patchData } from "../helpers/crud";
 const CardWish = () => {
   const urlFav = "https://mon-pays.fly.dev/usuarios";
   const [pintar, setPintar] = useState([]);
-
+  const [rendering, setRendering] = useState(1)   
 
 
   useEffect(() => {
     getItems().then((pintaritems) => setPintar(pintaritems));
   }, []);
 
+  
   
   const getItems = async () => {
     const resp = await fetch(`${urlFav}/${"1"}`);
@@ -21,21 +22,22 @@ const CardWish = () => {
   };
 
   const handleDelete = async({target}) => {
+    setRendering(target.id)
     const getFav = await get(`${urlFav}/${"1"}`)
     const {favoritos} = getFav;
     const filtrarObj =favoritos.filter(e => e.id !== Number(target.id))
     patchData(`${urlFav}/${"1"}`, {favoritos:filtrarObj})
-
+    
   };
 
   return (
     <>
-      <div className="flex flex-col items-center gap-5 justify-center w-screen">
+      <div className="flex flex-col items-center gap-5 justify-center ">
         <h1 className="font-bold text-2xl mt-5">Wish List</h1>
       </div>
 
       {pintar.map(({nombre,descripcion,id,url}) => (
-        <div key={id} className="w-full border-b-2 border-b-gray-300 flex flex-col p-10 justify-center items-center md:items-start md:flex-row">
+        <div key={id} className="w-full m-auto border-b-2 border-b-gray-300 flex flex-col p-10 justify-center items-center md:px-20  md:flex-row">
           <img
             className="w-36 place-self-center md:w-1/3 rounded-md"
             src={url.url1}
