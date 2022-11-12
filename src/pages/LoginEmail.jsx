@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import {Button} from '../components/Button'
 import { get } from '../helpers/crud';
@@ -7,6 +8,7 @@ import { useForm } from '../Hooks/useForm';
 
 const LoginEmail = () => {
   const urlUsuarios = `https://mon-pays.fly.dev/usuarios`;
+
 
   const { formValue, handleInputChangeName, reset } = useForm({
     email: "",
@@ -17,12 +19,12 @@ const LoginEmail = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     const getUsuarios = await get(urlUsuarios)
-    const findUsuario= getUsuarios.find(e => e.Email.toLowerCase() == formValue.email.toLowerCase() )
+    const findUsuario = getUsuarios.find(e => e.Email.toLowerCase() == formValue.email.toLowerCase() ) //validar si el usuario ya existe 
     if(findUsuario){
-      if(findUsuario.password == formValue.password){
+      if(findUsuario.password == formValue.password){   //validar si la password es correcta
         sessionStorage.setItem("idUser", findUsuario.id)
         window.location.reload()
-        console.log("Se logea");
+        
 
       }else{
 

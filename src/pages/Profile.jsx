@@ -7,7 +7,6 @@ import { useForm } from "../Hooks/useForm";
 const Profile = () => {
   const idUser = sessionStorage.getItem("idUser");
   const urlUsuarios = `https://mon-pays.fly.dev/usuarios/${idUser}`;
-
   const [pintar, setPintar] = useState([]);
 
   const { formValue, handleInputChangeName, reset } = useForm({
@@ -19,21 +18,21 @@ const Profile = () => {
 
   useEffect(() => {
     getItems().then((pintaritems) => setPintar(pintaritems));
-  }, [pintar]);
+  }, []);
+
 
   const getItems = async () => {
     const data = await get(urlUsuarios);
-
     return data;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const updateData = {
-      nombre: formValue.firstName,
-      apellido: formValue.lastName,
-      direccion: formValue.address,
-      Email: formValue.email,
+      nombre: formValue.firstName !== "" ? formValue.firstName : pintar.nombre,
+      apellido: formValue.lastName !== "" ? formValue.lastName : pintar.apellido,
+      direccion: formValue.address !== "" ? formValue.address : pintar.direccion,
+      Email: formValue.email !== "" ? formValue.email : pintar.Email,
       password: pintar.password,
       favoritos: pintar.favoritos,
       id: pintar.id,
@@ -47,10 +46,16 @@ const Profile = () => {
       confirmButtonText: "Yes, edit!",
     }).then((result) => {
       if (result.isConfirmed) {
-        patchData(urlUsuarios, updateData);
-        Swal.fire("Edited!", "Your file has been Edited.", "success");
+        Swal.fire("Edited!", "Your file has been Edited.", "success").then((result2) => {
+          if (result2.isConfirmed) {
+            patchData(urlUsuarios, updateData).then(() => {
+              window.location.reload()
+            });
+          }
+        })
       }
     });
+
   };
 
   return (
@@ -71,34 +76,40 @@ const Profile = () => {
         <h1 className="font-bold text-xl md:text-2xl text-center">
           Basic Information
         </h1>
-        <input
-          className="md:text-lg md:h-12 h-10 border-2 pl-5 md:w-96 sm:w-72  "
-          onChange={handleInputChangeName}
-          name="firstName"
-          placeholder={pintar.nombre}     
-          type="text"
-        />
-        <input
-          className="md:h-12 md:text-lg h-10 border-2 pl-5 md:w-96 sm:w-72 rounded-md "
-          onChange={handleInputChangeName}
-          name="lastName"
-          placeholder={pintar.apellido ? pintar.apellido : "Insert lastName"}
-          type="text"
-        />
-        <input
-          className="md:h-12 md:text-lg h-10 border-2 pl-5 md:w-96 sm:w-72 rounded-md "
-          onChange={handleInputChangeName}
-          name="email"
-          placeholder={pintar.Email}
-          type="email"
-        />
-        <input
-          className="md:h-12 md:text-lg h-10 border-2 pl-5 md:w-96 sm:w-72 rounded-md "
-          onChange={handleInputChangeName}
-          name="address"
-          placeholder={pintar.direccion ? pintar.direccion : "Insert address"}
-          type="text"
-        />
+        <div className="flex flex-col gap-2 justify-center">
+          <label className="ml-1 text-base font-medium">Name:</label>
+          <input
+            className="md:text-lg -mt-2 md:h-12 h-10 border-2 pl-5 md:w-96 sm:w-72  "
+            onChange={handleInputChangeName}
+            name="firstName"
+            placeholder={pintar.nombre}
+            type="text"
+          />
+          <label className="ml-1 text-base font-medium">Last Name:</label>
+          <input
+            className="md:h-12 md:text-lg -mt-2 h-10 border-2 pl-5 md:w-96 sm:w-72 rounded-md "
+            onChange={handleInputChangeName}
+            name="last Name"
+            placeholder={pintar.apellido ? pintar.apellido : "Insert lastname"}
+            type="text"
+          />
+          <label className="ml-1 text-base font-medium">Email:</label>
+          <input
+            className="md:h-12 md:text-lg -mt-2 h-10 border-2 pl-5 md:w-96 sm:w-72 rounded-md "
+            onChange={handleInputChangeName}
+            name="email"
+            placeholder={pintar.Email}
+            type="email"
+          />
+          <label className="ml-2 text-base font-medium">Adress:</label>
+          <input
+            className="md:h-12 md:text-lg -mt-2 h-10 border-2 pl-5 md:w-96 sm:w-72 rounded-md "
+            onChange={handleInputChangeName}
+            name="address"
+            placeholder={pintar.direccion ? pintar.direccion : "Insert address"}
+            type="text"
+          />
+        </div>
         <div className="w-20 mx-auto md:w-32 mt-4 ">
           <Button text={"Change"} />
         </div>

@@ -18,8 +18,7 @@ const Welcome = () => {
             <main className='md:px-36 mt-20'>
                 <h1 className='text-black font-semibold text-7xl text-center'>Mon-Pays</h1>
                 <div className='text-center mt-8 w-full'>
-                    <p className='text-[#979797]'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br />
-                        Lorem Ipsum has been the industry's standard dummy text</p>
+                    <p className='text-[#979797] text-lg'>Find the property of your dreams or sell your real estate and show the world your beauties</p>
                 </div>
                 <Link to={`${idUser ? "/shop" : "/loginEmail"}`} >
                     <div className=' border border-black p-2 w-40 h-12 m-auto mt-6 flex justify-center items-center cursor-pointer hover:bg-black hover:text-white transition-all duration-300'>

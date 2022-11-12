@@ -1,34 +1,31 @@
-import React, { useEffect, useState } from "react";
-import { get, patchData } from "../helpers/crud";
+import React, { useContext, useEffect, useState } from "react";
+import { get, getData, patchData } from "../helpers/crud";
 import { FaSadTear } from 'react-icons/fa';
+import { Context } from "../Context/ContextProvider";
 
 
 const CardWish = () => {
     const urlFav = "https://mon-pays.fly.dev/usuarios";
     const [pintar, setPintar] = useState([]);
     const idUser = sessionStorage.getItem('idUser')
-    const aux = []
 
+
+    const {handleBandera, bandera, setBandera} = useContext(Context)
 
     useEffect(() => {
-        getItems().then((pintaritems) => setPintar(pintaritems));
-        
-    }, [pintar]);
-
-    console.log(pintar);
-    const getItems = async () => {
-        const resp = await fetch(`${urlFav}/${idUser}`);
-        const data = await resp.json();
-        
-        return data.favoritos;
-    };
+        getData(setPintar,`${urlFav}/${idUser}`)
+        setBandera(false)
+    }, [bandera]);
 
     const handleDelete = async ({ target }) => {
-
+        
         const getFav = await get(`${urlFav}/${idUser}`)
         const { favoritos } = getFav;
-        const filtrarObj = favoritos.filter(e => e.id !== Number(target.id))
-        patchData(`${urlFav}/${idUser}`, { favoritos: filtrarObj })
+        const filtrarObj = favoritos.filter(e => e.id !== Number(target.id)) //encontramos
+        patchData(`${urlFav}/${idUser}`, { favoritos: filtrarObj }).then(() =>{
+            handleBandera()
+        })
+        
     };
 
 
@@ -38,7 +35,7 @@ const CardWish = () => {
                 <h1 className="font-bold text-4xl my-10">Favorites</h1>
             </div>
 
-            {pintar.length >= 1 ? pintar.map(({ nombre, descripcion, id, url }) => (
+            {pintar.favoritos?.length >= 1 ? pintar.favoritos.map(({ nombre, descripcion, id, url }) => (
                 <div key={id} className="w-full m-auto border-b-2 border-b-gray-300 flex flex-col p-10 justify-center items-center md:px-20  md:flex-row">
                     <img
                         className="w-36 place-self-center md:w-1/3 rounded-md"

@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/loginEmail",
-        element: idUser ? <Welcome /> : <LoginEmail />,
+        element: idUser ? <Shop /> : <LoginEmail />,
       },
       {
         path: "/registerEmail",

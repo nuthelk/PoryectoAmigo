@@ -11,8 +11,9 @@ const LayoutLogin = () => {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
-    const navigate = useNavigate()
 
+
+//Cerrar sesion
     const handleLogout = () =>{
         sessionStorage.removeItem('idUser')
         window.location.reload()
@@ -28,7 +29,6 @@ const LayoutLogin = () => {
                             <img src={logo} alt="logo" className='h-10' />
                             <h3 className='text-2xl font-semibold cursor-pointer w-28'>Mon-Pays</h3>
                         </div>
-                        
                     </Link>
                     <Link to="/shop" >
                         <p className='cursor-pointer text-xl font-light  hidden md:block '>Shop</p>

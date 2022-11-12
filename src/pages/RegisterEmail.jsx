@@ -10,7 +10,7 @@ const RegisterEmail = () => {
   const navigate = useNavigate()
 
   // Este es un custom hook que me permite alamcenar los datos de los inputs en handleInputChangeName, para despues imprimirlos en formValue
-  const { formValue, handleInputChangeName, reset } = useForm({
+  const { formValue, handleInputChangeName } = useForm({
     nombre: "",
     email: "",
     password: "",

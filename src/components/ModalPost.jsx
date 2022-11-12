@@ -1,14 +1,16 @@
 import { Button, FormControl, FormLabel, Input, InputGroup, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper, Select, Stack, Textarea, useDisclosure } from "@chakra-ui/react"
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
+import { Context } from "../Context/ContextProvider";
 import { patchData, post } from "../helpers/crud";
 import { useForm } from "../Hooks/useForm";
 
 
 export function ModalPost({ isOpen, onOpen, onClose, initialRef, finalRef}) {
 
+    const {handleBandera} = useContext(Context)
     const [option, setOption] = useState("new")
-    const { formValue, handleInputChangeName, reset, rendering, setRendering } = useForm({
+    const { formValue, handleInputChangeName} = useForm({
         nombre: "",
         categoria: "",
         precio: "",
@@ -41,7 +43,7 @@ export function ModalPost({ isOpen, onOpen, onClose, initialRef, finalRef}) {
         }
         onClose()
         Swal.fire({
-            title: 'Are you sure to edit?',
+            title: 'Are you sure to publish?',
             icon: 'success',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -50,12 +52,15 @@ export function ModalPost({ isOpen, onOpen, onClose, initialRef, finalRef}) {
         }).then((result) => {
             if (result.isConfirmed) {
                 setOption("new")
-                post("https://mon-pays.fly.dev/Propertys", updateData);
+                post("https://mon-pays.fly.dev/Propertys", updateData).then(()=>{
+                    handleBandera()
+                })
                 Swal.fire(
                     'Published!',
                     'Your property has been published',
                     'success'
                 )
+                
                 
             } else {
                 onOpen()

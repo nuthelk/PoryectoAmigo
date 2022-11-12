@@ -17,10 +17,10 @@ const LayoutLogout = () => {
 
         <div className='flex justify-around items-center gap-3 sm:gap-8'>
           <Link to="/loginEmail">
-            <p className='cursor-pointer text-lg'>Login</p>
+            <p className='cursor-pointer text-xl'>Login</p>
           </Link>
           <Link to="/registerEmail">
-            <p className='cursor-pointer text-lg'>Register</p>
+            <p className='cursor-pointer text-xl'>Register</p>
           </Link>
         </div>
       </div>

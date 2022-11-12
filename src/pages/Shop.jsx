@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import ButtonBlack from '../components/ButtonBlack'
 import DesignPropiedad from '../components/DesignPropiedad'
 import {BiSearch} from 'react-icons/bi'
 import { SortArray, SortArray2, SortArrayPrice, SortArrayPrice2 } from '../helpers/funcionesOrdenamiento'
 import { useDisclosure } from '@chakra-ui/react'
 import { ModalPost } from '../components/ModalPost'
-import { render } from 'react-dom'
+import { Context } from '../Context/ContextProvider'
+
 
 const Shop = () => {
 
     const [dataPropiedad, setDataPropiedad] = useState()
     const [search, setSearch] = useState()
     const [bandera, setBandera] = useState(false)
-    const [rendering, setRendering] = useState(1)
-
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const { isOpen, onOpen, onClose } = useDisclosure() //funciones chackra ui modal
     const initialRef = React.useRef(null)
     const finalRef = React.useRef(null)
-
+    const {bandera:banderaContext} = useContext(Context)
     
 
     //traer los datos de las propiedades
@@ -28,7 +27,7 @@ const Shop = () => {
             setDataPropiedad(datos)
         }
         data()  
-    }, [rendering])
+    }, [banderaContext])
 
     //enviar el id al localStorage clickear una propiedad
     const enviarID = (id) => {
@@ -40,7 +39,7 @@ const Shop = () => {
     if(!search){
         results = dataPropiedad
     }else{
-        results = dataPropiedad.filter((dato) => dato.nombre.toLowerCase().includes(search.toLowerCase()))
+        results = dataPropiedad.filter((dato) => dato.nombre.toLowerCase().includes(search.toLowerCase())) //filtrar por nombre
     }
 
     //funcion busqueda
@@ -103,8 +102,7 @@ const Shop = () => {
                 onClose={onClose}
                 initialRef={initialRef}
                 finalRef={finalRef}
-                setRendering={setRendering}
-                rendering={rendering}
+               
             />
 
             <div className='md:flex items-center relative mt-4 justify-center bg-white w-56  md:w-80 m-auto rounded-lg'>

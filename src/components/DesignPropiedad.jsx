@@ -5,7 +5,7 @@ import { formatterPeso } from '../helpers/formatoMoneda'
 const DesignPropiedad = ({ imagen, precio, nombre, categoria }) => {
   return (
     <Link to="/description">
-      <div className='cursor-pointer'>
+      <div className='cursor-pointer hover:scale-110 transition-all duration-300'>
         <div className='h-72 w-72'>
           <img src={imagen} alt={nombre} className="h-full w-full object-cover" />
         </div>

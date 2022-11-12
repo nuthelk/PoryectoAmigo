@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { AiFillHeart } from "react-icons/ai";
-import { Button } from "../components/Button";
+import ButtonContact from "../components/ButtonContact";
 import { get, patchData, post } from "../helpers/crud";
+import { formatterPeso } from "../helpers/formatoMoneda";
 
 const Description = () => {
   const [addFav, setAddFav] = useState(false);
   const [urlsImg, setUrlsImg] = useState();
-  const [switche, setSwitche] = useState(false);
   const [pintar, setPintar] = useState([]);
   const id = localStorage.getItem("id")
   const urlDescri = `https://mon-pays.fly.dev/Propertys/${id}`;
@@ -17,6 +17,8 @@ const Description = () => {
     getItems().then((pintaritems) => setPintar(pintaritems));
   }, []);
 
+
+//funcion para saber si la propiedad ya esta agregada a favoritos
   const getItems = async () => {
     const resp = await fetch(urlDescri);
     const data = await resp.json();
@@ -32,6 +34,7 @@ const Description = () => {
     return data;
   };
 
+  //Guardar en favoritos y eliminar de favoritos
   const handleWishList = async() => {
     
     const getFav = await get(`${urlFav}/${idUser}`)
@@ -45,7 +48,6 @@ const Description = () => {
       setAddFav(false)
     }else{
       aux.push(pintar)
-      console.log(aux);
       patchData(`${urlFav}/${idUser}`, {favoritos:aux});
       setAddFav(true)
     }
@@ -80,7 +82,7 @@ const Description = () => {
         <div className="flex justify-between">
           <div className="flex flex-col gap-2">
             <h1 className="font-bold text-xl">{pintar.nombre}</h1>
-            <p className="font-medium">{pintar.precio}</p>
+            <p className="font-medium">{formatterPeso.format(pintar.precio)}</p>
             <p className="font-light text-gray-400">{pintar.direccion}</p>
           </div>
           <AiFillHeart
@@ -95,12 +97,12 @@ const Description = () => {
             {pintar.descripcion}
           </p>
         </div>
-        <p className="font-semibold text-lg">Cartegoria:</p>
-        <div className="bg-black text-white w-32 h-8 flex justify-center items-center rounded-md font-medium">
+        <p className="font-semibold text-lg">Category:</p>
+        <div className="bg-black text-white w-32 h-8 flex justify-center items-center rounded-md font-medium capitalize">
           {pintar.categoria}
         </div>
         <div className="w-56 mx-auto mt-2 md:mt-10">
-          <Button text={"Contact us"} />
+          <ButtonContact text={"Contact us"} />
         </div>
       </div>
     </div>
