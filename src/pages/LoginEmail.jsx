@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
+import {useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import {Button} from '../components/Button'
 import { get } from '../helpers/crud';
@@ -8,7 +8,7 @@ import { useForm } from '../Hooks/useForm';
 
 const LoginEmail = () => {
   const urlUsuarios = `https://mon-pays.fly.dev/usuarios`;
-
+  const navigate = useNavigate()
 
   const { formValue, handleInputChangeName, reset } = useForm({
     email: "",
@@ -23,7 +23,7 @@ const LoginEmail = () => {
     if(findUsuario){
       if(findUsuario.password == formValue.password){   //validar si la password es correcta
         sessionStorage.setItem("idUser", findUsuario.id)
-        window.location.reload()
+        navigate("/shop")
         
 
       }else{
