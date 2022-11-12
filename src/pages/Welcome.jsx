@@ -10,6 +10,9 @@ import { Link } from 'react-router-dom'
 
 
 const Welcome = () => {
+
+    const idUser = sessionStorage.getItem('idUser')
+
   return (
     <div className=''>
         <main className='md:px-36 mt-20'>
@@ -18,9 +21,9 @@ const Welcome = () => {
                 <p className='text-[#979797]'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <br />
                 Lorem Ipsum has been the industry's standard dummy text</p>
             </div>
-            <Link to="/shop">
+            <Link to={`${idUser ? "/shop": "/loginEmail"}`} >
                 <div className=' border border-black p-2 w-40 h-12 m-auto mt-6 flex justify-center items-center cursor-pointer hover:bg-black hover:text-white transition-all duration-300'>
-                    <p className='font-semibold'>Show All</p>
+                    <p className='font-semibold' >Show All</p>
                 </div>
             </Link>
            

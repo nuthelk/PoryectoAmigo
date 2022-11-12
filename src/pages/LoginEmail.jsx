@@ -17,10 +17,11 @@ const LoginEmail = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     const getUsuarios = await get(urlUsuarios)
-    const findUsuario= getUsuarios.find(e => e.Email == formValue.email )
+    const findUsuario= getUsuarios.find(e => e.Email.toLowerCase() == formValue.email.toLowerCase() )
     if(findUsuario){
       if(findUsuario.password == formValue.password){
-
+        sessionStorage.setItem("idUser", findUsuario.id)
+        window.location.reload()
         console.log("Se logea");
 
       }else{

@@ -11,6 +11,7 @@ const Description = () => {
   const id = localStorage.getItem("id")
   const urlDescri = `https://mon-pays.fly.dev/Propertys/${id}`;
   const urlFav = "https://mon-pays.fly.dev/usuarios";
+  const idUser = sessionStorage.getItem('idUser')
 
   useEffect(() => {
     getItems().then((pintaritems) => setPintar(pintaritems));
@@ -20,7 +21,7 @@ const Description = () => {
     const resp = await fetch(urlDescri);
     const data = await resp.json();
     setUrlsImg(data.url);
-    const {favoritos} = await get(`${urlFav}/${"1"}`)
+    const {favoritos} = await get(`${urlFav}/${idUser}`)
     const findFav = favoritos.find(e => e.id == data.id )
     if(findFav){
       setAddFav(true)
@@ -33,19 +34,19 @@ const Description = () => {
 
   const handleWishList = async() => {
     
-    const getFav = await get(`${urlFav}/${"1"}`)
+    const getFav = await get(`${urlFav}/${idUser}`)
     const {favoritos} = getFav
     const aux = favoritos
     const findFav = favoritos.find(e => e.id == pintar.id )
     
     if(findFav){
       const filtrarObj =favoritos.filter(e => e.id !== pintar.id)
-      patchData(`${urlFav}/${"1"}`, {favoritos:filtrarObj})
+      patchData(`${urlFav}/${idUser}`, {favoritos:filtrarObj})
       setAddFav(false)
     }else{
       aux.push(pintar)
       console.log(aux);
-      patchData(`${urlFav}/${"1"}`, {favoritos:aux});
+      patchData(`${urlFav}/${idUser}`, {favoritos:aux});
       setAddFav(true)
     }
 

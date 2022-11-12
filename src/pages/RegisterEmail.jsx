@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { Button } from '../components/Button'
 import { get, post } from '../helpers/crud';
@@ -6,6 +7,7 @@ import { useForm } from '../Hooks/useForm';
 
 const RegisterEmail = () => {
   const urlUsuarios = `https://mon-pays.fly.dev/usuarios`;
+  const navigate = useNavigate()
 
   // Este es un custom hook que me permite alamcenar los datos de los inputs en handleInputChangeName, para despues imprimirlos en formValue
   const { formValue, handleInputChangeName, reset } = useForm({
@@ -48,6 +50,7 @@ const RegisterEmail = () => {
           'You clicked the button!',
           'success'
         )
+        navigate("/loginEmail")
       }
     }
   }

@@ -1,17 +1,22 @@
 import React, { useState } from 'react'
 import { GiHamburgerMenu } from 'react-icons/gi'
-import {RiLogoutBoxLine} from 'react-icons/ri'
-import {MdFavorite} from 'react-icons/md'
+import { RiLogoutBoxLine } from 'react-icons/ri'
+import { MdFavorite } from 'react-icons/md'
 import { Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Input, useDisclosure } from '@chakra-ui/react'
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Outlet, useNavigate } from 'react-router-dom'
+
 
 const LayoutLogin = () => {
 
-
-
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
+    const navigate = useNavigate()
 
+    const handleLogout = () =>{
+        sessionStorage.removeItem('idUser')
+        window.location.reload()
+        onClose()
+    }
 
     return (
         <header className='bg-black h-16  '>
@@ -23,7 +28,7 @@ const LayoutLogin = () => {
                     <Link to="/shop" >
                         <p className='cursor-pointer text-xl font-light  hidden md:block '>Shop</p>
                     </Link>
-                    
+
 
                 </div>
 
@@ -32,12 +37,14 @@ const LayoutLogin = () => {
                     <div className='flex items-center justify-center  cursor-pointer gap-2'>
                         <MdFavorite size={24} className="mt-1" />
                         <Link to="/wishList"><p className='text-xl'>Favorites</p></Link>
-                        
+
                     </div>
                     <Link to="/profile">
                         <p className='cursor-pointer text-xl'>Profile</p>
                     </Link>
-                    
+
+                    <p className='cursor-pointer text-xl' onClick={handleLogout}>Logout</p>
+
                 </div>
                 <GiHamburgerMenu size={24} className="cursor-pointer md:hidden block" onClick={onOpen} />
 
@@ -62,13 +69,13 @@ const LayoutLogin = () => {
                             <Link to="/wishList" onClick={onClose}>
                                 <p className='cursor-pointer text-2xl font-medium '>Favorites</p>
                             </Link>
-                            
+
                             <div className='mt-36 flex items-center justify-center gap-2 cursor-pointer '>
-                                <p className='text-lg font-medium '>Logout</p>
+                                <p className='text-lg font-medium ' onClick={handleLogout}>Logout</p>
                                 <RiLogoutBoxLine className='mt-1' size={20} />
                             </div>
-                            
-                            
+
+
                         </DrawerBody>
 
                         <DrawerFooter>

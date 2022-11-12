@@ -14,12 +14,13 @@ import Description from './pages/Description';
 import WishList from './pages/WishList';
 import Shop from './pages/Shop';
 
+let idUser = sessionStorage.getItem('idUser')
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element:<LayoutLogin />,
+    element: idUser ? <LayoutLogin /> : <LayoutLogout />,
     children: [
       {
         index: true,
@@ -27,27 +28,27 @@ const router = createBrowserRouter([
       },
       {
         path: "/loginEmail",
-        element: <LoginEmail />,
+        element: idUser ? <Welcome /> : <LoginEmail />,
       },
       {
         path: "/registerEmail",
-        element: <RegisterEmail />,
+        element: idUser ? <Welcome /> : <RegisterEmail />,
       },
       {
         path: "/profile",
-        element:<Profile />
+        element: idUser ? <Profile /> : <Welcome />
       },
       {
         path: "/wishList",
-        element: <WishList />,
+        element: idUser ? <WishList />: <Welcome />
       },
       {
         path: "/description",
-        element:<Description />
+        element: idUser ? <Description /> : <Welcome />
       },
       {
         path: "/shop",
-        element:<Shop />
+        element: idUser ? <Shop /> : <Welcome />
       }
     ]
   },
