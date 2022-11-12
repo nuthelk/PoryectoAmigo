@@ -14,16 +14,19 @@ import Description from './pages/Description';
 import WishList from './pages/WishList';
 import Shop from './pages/Shop';
 import NotFound from './pages/NotFound';
+import { useContext, useEffect } from 'react';
+import { Context } from './Context/ContextProvider';
 
 
 let idUser = sessionStorage.getItem('idUser')
+
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: idUser ? <LayoutLogin /> : <LayoutLogout />,
-    errorElement:idUser ? <><LayoutLogin /><NotFound /></> : <><LayoutLogout /> <NotFound /></>,
+    errorElement: idUser ? <><LayoutLogin /><NotFound /></> : <><LayoutLogout /> <NotFound /></>,
     children: [
       {
         index: true,
@@ -43,7 +46,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/wishList",
-        element: idUser ? <WishList />: <Welcome />
+        element: idUser ? <WishList /> : <Welcome />
       },
       {
         path: "/description",
@@ -55,20 +58,26 @@ const router = createBrowserRouter([
       }
     ]
   },
-  
-  
 
 
- 
+
+
+
 
 ]);
 
 function App() {
- 
+
+  const { handleBandera, bandera, setBandera } = useContext(Context)
+
+  useEffect(() => {
+    console.log("funciona")
+  }, [bandera])
+
   return (
-    <div className="App bg-[#EFF2F6] max-h-max h-screen overflow-y-scroll ">     
-        <RouterProvider router={router} />
-        
+    <div className="App bg-[#EFF2F6] max-h-max h-screen overflow-y-scroll ">
+      <RouterProvider router={router} />
+
     </div>
   )
 }

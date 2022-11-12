@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import logo4 from '../img/logo4.png'
 import logo5 from '../img/logo5.png'
 import logo3 from '../img/logo 3.png'
@@ -12,6 +12,10 @@ import { Link } from 'react-router-dom'
 const Welcome = () => {
 
     const idUser = sessionStorage.getItem('idUser')
+
+    useEffect(()=>{
+        console.log("algo")
+    },[idUser])
 
     return (
         <div className=''>

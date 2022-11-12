@@ -10,7 +10,8 @@ const LoginEmail = () => {
   const urlUsuarios = `https://mon-pays.fly.dev/usuarios`;
   const navigate = useNavigate()
 
-  const { formValue, handleInputChangeName, reset } = useForm({
+
+  const { formValue, handleInputChangeName } = useForm({
     email: "",
     password: ""
   });
@@ -23,8 +24,8 @@ const LoginEmail = () => {
     if(findUsuario){
       if(findUsuario.password == formValue.password){   //validar si la password es correcta
         sessionStorage.setItem("idUser", findUsuario.id)
-        navigate("/shop")
-        
+        // navigate("/")
+        window.location.replace('/')
 
       }else{
 
