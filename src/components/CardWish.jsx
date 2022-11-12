@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { get, patchData } from "../helpers/crud";
+import { FaSadTear } from 'react-icons/fa';
 
 
 const CardWish = () => {
     const urlFav = "https://mon-pays.fly.dev/usuarios";
     const [pintar, setPintar] = useState([]);
     const idUser = sessionStorage.getItem('idUser')
+    const aux = []
 
 
     useEffect(() => {
         getItems().then((pintaritems) => setPintar(pintaritems));
-
+        
     }, [pintar]);
 
-
+    console.log(pintar);
     const getItems = async () => {
         const resp = await fetch(`${urlFav}/${idUser}`);
         const data = await resp.json();
-
+        
         return data.favoritos;
     };
 
@@ -33,10 +35,10 @@ const CardWish = () => {
     return (
         <>
             <div className="flex flex-col items-center gap-5 justify-center ">
-                <h1 className="font-bold text-2xl mt-5">Wish List</h1>
+                <h1 className="font-bold text-4xl my-10">Favorites</h1>
             </div>
 
-            {pintar.map(({ nombre, descripcion, id, url }) => (
+            {pintar.length >= 1 ? pintar.map(({ nombre, descripcion, id, url }) => (
                 <div key={id} className="w-full m-auto border-b-2 border-b-gray-300 flex flex-col p-10 justify-center items-center md:px-20  md:flex-row">
                     <img
                         className="w-36 place-self-center md:w-1/3 rounded-md"
@@ -57,7 +59,12 @@ const CardWish = () => {
                         </div>
                     </div>
                 </div>
-            ))}
+            )): 
+            <div className="flex flex-col justify-center items-center w-full gap-5 h-[500px] px-10 text-center">
+                <FaSadTear size={60} color={"#e0e0e0"}/>
+                <h1 className="text-2xl font-semibold text-[#e0e0e0]">You have nothing in favorites</h1>
+            </div>
+          }
         </>
     );
 };
