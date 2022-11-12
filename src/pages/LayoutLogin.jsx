@@ -4,6 +4,7 @@ import { RiLogoutBoxLine } from 'react-icons/ri'
 import { MdFavorite } from 'react-icons/md'
 import { Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Input, useDisclosure } from '@chakra-ui/react'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
+import logo from '../img/logo.png'
 
 
 const LayoutLogin = () => {
@@ -19,11 +20,15 @@ const LayoutLogin = () => {
     }
 
     return (
-        <header className='bg-black h-16  '>
+        <header className='bg-black h-16 '>
             <div className='flex items-center justify-between  text-white h-full md:px-20 lg:px-28 sm:px-16 px-2'>
                 <div className='flex md:justify-around items-center md:gap-12 gap-4 '>
                     <Link to="/" >
-                        <h3 className='text-2xl font-semibold cursor-pointer w-28'>Mon-Pays</h3>
+                        <div className='flex items-center gap-4'>
+                            <img src={logo} alt="logo" className='h-10' />
+                            <h3 className='text-2xl font-semibold cursor-pointer w-28'>Mon-Pays</h3>
+                        </div>
+                        
                     </Link>
                     <Link to="/shop" >
                         <p className='cursor-pointer text-xl font-light  hidden md:block '>Shop</p>

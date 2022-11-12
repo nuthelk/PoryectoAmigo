@@ -13,6 +13,8 @@ import Profile from './pages/Profile';
 import Description from './pages/Description';
 import WishList from './pages/WishList';
 import Shop from './pages/Shop';
+import NotFound from './pages/NotFound';
+
 
 let idUser = sessionStorage.getItem('idUser')
 
@@ -21,6 +23,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: idUser ? <LayoutLogin /> : <LayoutLogout />,
+    errorElement:idUser ? <><LayoutLogin /><NotFound /></> : <><LayoutLogout /> <NotFound /></>,
     children: [
       {
         index: true,
@@ -63,8 +66,9 @@ const router = createBrowserRouter([
 function App() {
  
   return (
-    <div className="App bg-[#EFF2F6] h-screen overflow-y-scroll">     
+    <div className="App bg-[#EFF2F6] max-h-max h-screen overflow-y-scroll ">     
         <RouterProvider router={router} />
+        
     </div>
   )
 }
