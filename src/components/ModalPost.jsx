@@ -25,7 +25,6 @@ export function ModalPost({ isOpen, onOpen, onClose, initialRef, finalRef}) {
         }
     });
 
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const updateData = {
