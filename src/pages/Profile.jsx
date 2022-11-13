@@ -49,7 +49,7 @@ const Profile = () => {
         Swal.fire("Edited!", "Your file has been Edited.", "success").then((result2) => {
           if (result2.isConfirmed) {
             patchData(urlUsuarios, updateData).then(() => {
-              window.location.href = window.location.href
+              window.location.reload()
             });
           }
         })
