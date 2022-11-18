@@ -39,7 +39,7 @@ const Shop = () => {
     if(!search){
         results = dataPropiedad
     }else{
-        results = dataPropiedad.filter((dato) => dato.nombre.toLowerCase().includes(search.toLowerCase())) //filtrar por nombre
+        results = dataPropiedad.filter((dato) => dato.nombre.includes(search)) //filtrar por nombre
     }
 
     //funcion busqueda
