@@ -89,7 +89,7 @@ const Profile = () => {
           <input
             className="md:h-12 md:text-lg -mt-2 h-10 border-2 pl-5 md:w-96 sm:w-72 rounded-md "
             onChange={handleInputChangeName}
-            name="last Name"
+            name="lastName"
             placeholder={pintar.apellido ? pintar.apellido : "Insert lastname"}
             type="text"
           />

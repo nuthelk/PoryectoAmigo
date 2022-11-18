@@ -8,7 +8,6 @@ export const getData = async(state,url)=>{
 
 
 
-
 export async function post ( url, data ) {
     try {
         await fetch( url, {
